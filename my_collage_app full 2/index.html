@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Entregas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loginScreen">
+        <h2>Bienvenido, Repartidor</h2>
+        <p>Por favor, ingresa tu contraseña para acceder.</p>
+        <input type="password" id="passwordInput" placeholder="Contraseña">
+        <button id="loginButton" class="button">Acceder</button>
+        <p id="loginMessage" style="margin-top: 10px;"></p>
+    </div>
+
+    <div id="appContent" class="app-container hidden">
+        <h1>Reporte de Entregas 📸</h1>
+
+        <div class="section">
+            <h2><span>📦</span> Detalles de la Entrega</h2>
+            <div class="input-group">
+                <label for="deliveryIdInput" id="deliveryIdLabel">ID de Entrega (Opcional - por defecto: Parada 1):</label>
+                <input type="text" id="deliveryIdInput" placeholder="Ej: Parada 1 / Nombre Cliente">
+            </div>
+             <div class="metadata-controls">
+                <input type="checkbox" id="includeMetadataCheckbox" checked>
+                <label for="includeMetadataCheckbox">Incluir Fecha, Hora y Geolocalización en la foto</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span>📷</span> Captura de Fotos</h2>
+            <div class="camera-video-container">
+                <video id="camera-video" autoplay playsinline class="hidden"></video>
+            </div>
+            <div class="camera-select-container hidden">
+                <label for="cameraSelect">Seleccionar Cámara:</label>
+                <select id="cameraSelect"></select>
+            </div>
+            <div class="button-group">
+                <button id="takePhotoButton" class="button hidden">Tomar Foto</button>
+                <button id="stopCameraButton" class="button danger hidden">Detener Cámara</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span>💧</span> Marca de Agua</h2>
+            <div class="file-input-container">
+                <label for="watermarkFileInput">Cargar Imagen (PNG):</label>
+                <input type="file" id="watermarkFileInput" accept="image/png">
+            </div>
+            <p id="watermarkMessage"></p>
+            <div class="button-group">
+                <button id="clearWatermarkButton" class="button danger hidden">Eliminar Marca de Agua</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span>🖼️</span> Fotos de la Entrega Actual</h2>
+            <div id="collageGrid">
+                <p class="placeholder-text">¡Toma fotos para tu reporte aquí!</p>
+            </div>
+            <div class="button-group">
+                <button id="clearPhotosButton" class="button secondary hidden">Limpiar Fotos</button>
+                <button id="saveCollageButton" class="button hidden">Guardar Reporte</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span>📈</span> Jornada de Entregas</h2>
+            <p>Guarda tus reportes de entrega para exportarlos todos al final de la jornada.</p>
+            <div class="button-group">
+                <button id="closeSessionButton" class="button hidden">Cerrar Jornada y Exportar PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+
+    <footer>
+        <p>&copy; 2025 Reporte de Entregas. Desarrollado con mucho cariño para ti.</p>
+    </footer>
+</body>
+</html>

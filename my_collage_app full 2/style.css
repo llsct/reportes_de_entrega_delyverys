@@ -1,0 +1,417 @@
+/* style.css */
+
+/* Fuentes y Estilos Generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para que el footer quede abajo */
+    justify-content: flex-start; /* Alinea contenido principal arriba */
+    align-items: center; /* Centra el app-container horizontalmente */
+    min-height: 100vh; /* Asegura que ocupe al menos toda la altura de la vista */
+    overflow-y: auto; /* Permite desplazamiento si el contenido excede la altura */
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+}
+
+/* Contenedor Principal de la Aplicación */
+.app-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 600px; /* Ancho máximo para pantallas grandes */
+    margin: 20px auto; /* Centra el contenedor y da espacio */
+    box-sizing: border-box;
+    flex-grow: 1; /* Permite que el contenedor principal crezca y empuje el footer hacia abajo */
+    display: flex; /* Para centrar su contenido si es necesario */
+    flex-direction: column; /* Su contenido se apila verticalmente */
+}
+
+/* Estilos del Encabezado */
+h1 {
+    color: #2e7d32; /* Verde un poco más oscuro */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    position: relative;
+}
+
+h1::after {
+    content: '📸'; /* Icono de cámara para el título */
+    font-size: 0.8em;
+    position: absolute;
+    right: -10px; /* Ajusta la posición del icono */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Secciones de la Aplicación */
+.section {
+    background-color: #e8f5e9; /* Verde muy claro */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid #c8e6c9;
+}
+
+.section h2 {
+    color: #388e3c; /* Verde medio */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    display: flex;
+    align-items: center;
+}
+
+.section h2 span {
+    margin-right: 10px;
+    font-size: 1.2em; /* Tamaño del icono */
+}
+
+/* Controles de la Cámara */
+.camera-controls {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.camera-video-container {
+    position: relative;
+    width: 100%;
+    /* Por defecto, podemos empezar con 16:9 para un equilibrio */
+    padding-top: 56.25%; /* Ratio 16:9 (altura es 56.25% del ancho) */
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#camera-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que el video llene el contenedor */
+    border-radius: 8px;
+    transform: scaleX(-1); /* Reflejar para el modo selfie por defecto */
+    display: block; /* Para que ocupe su propio espacio */
+}
+
+#camera-video.hidden {
+    display: none;
+}
+
+.camera-select-container {
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.camera-select-container label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+#cameraSelect {
+    width: calc(100% - 24px); /* Ajuste para padding y borde */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    appearance: none; /* Elimina estilos por defecto en algunos navegadores */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2C114.7L146.2%2C255.5L5.4%2C114.7h281.6z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+}
+#cameraSelect.hidden {
+    display: none;
+}
+
+/* Inputs de Texto */
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 24px); /* Ajuste para padding y borde */
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #b3e0b5; /* Borde verde claro */
+    border-radius: 6px;
+    font-size: 1.1em;
+    box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: #9ccc9c; /* Placeholder más claro */
+}
+
+/* Botones */
+.button {
+    background-color: #4CAF50; /* Verde vibrante */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block; /* Para que los estilos de padding funcionen bien */
+    margin: 5px; /* Espacio entre botones */
+}
+
+.button:hover {
+    background-color: #45a049; /* Verde ligeramente más oscuro al pasar el ratón */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+.button:active {
+    background-color: #39843c; /* Verde más oscuro al hacer clic */
+    transform: translateY(0);
+}
+
+.button.secondary {
+    background-color: #ff9800; /* Naranja */
+}
+
+.button.secondary:hover {
+    background-color: #fb8c00;
+}
+
+.button.danger {
+    background-color: #f44336; /* Rojo */
+}
+
+.button.danger:hover {
+    background-color: #e53935;
+}
+
+/* Contenedor de Botones */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los botones */
+    margin-top: 20px;
+}
+
+/* Collage Grid */
+#collageGrid {
+    display: grid;
+    /* Ajustado para una columna en móviles y hasta 2 en tablets/escritorio pequeños */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+    gap: 15px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px dashed #a5d6a7; /* Borde punteado verde claro */
+    border-radius: 8px;
+    min-height: 200px;
+    display: flex; /* Usar flexbox para centrar contenido cuando está vacío */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#collageGrid.empty {
+    display: flex; /* Asegura que el placeholder se centre cuando no hay fotos */
+}
+
+.collage-photo {
+    width: 100%; /* Asegura que la imagen ocupe el espacio de su grid */
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#collageGrid .placeholder-text {
+    color: #9e9e9e;
+    font-style: italic;
+    text-align: center;
+    width: 100%; /* Asegura que el texto ocupe todo el ancho disponible */
+}
+
+/* Checkbox y Controles de Metadatos */
+.metadata-controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #f0f4c3; /* Amarillo claro */
+    border: 1px solid #e6ee9c;
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.metadata-controls input[type="checkbox"] {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.metadata-controls label {
+    color: #555;
+    font-weight: bold;
+}
+
+/* Login Screen */
+#loginScreen {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px; /* Ancho máximo para el login */
+    text-align: center;
+    position: fixed; /* Lo fija en la pantalla */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste fino para centrado */
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Ajusta la altura al contenido */
+    box-sizing: border-box;
+}
+
+#loginScreen h2 {
+    color: #2e7d32;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+#loginScreen label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    font-weight: bold;
+}
+
+#loginMessage {
+    color: #f44336;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Estado oculto */
+.hidden {
+    display: none !important;
+}
+
+/* Footer (Ahora está al final del body) */
+footer {
+    text-align: center;
+    margin-top: 30px; /* Margen superior para separarlo del contenido de la app */
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
+    background-color: #f0f0f0;
+    border-top: 1px solid #e0e0e0;
+    width: 100%;
+    box-sizing: border-box;
+    /* Agregamos esto para asegurar que el footer siempre esté abajo del todo */
+    margin-top: auto; /* Empuja el footer hacia abajo si el body es un flex container */
+}
+
+
+/* Responsive Design para pantallas más pequeñas (especialmente en vertical) */
+@media (max-width: 768px) {
+    .app-container, #loginScreen {
+        margin: 10px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .section h2 {
+        font-size: 1.4em;
+    }
+
+    .button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    /* Fuerza a una sola columna en pantallas pequeñas para mejor visualización vertical */
+    #collageGrid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Asegurar que los inputs no sean demasiado anchos o estrechos */
+    input[type="text"],
+    input[type="password"],
+    #cameraSelect {
+        width: 100%; /* Ocupa todo el ancho disponible para facilitar la interacción */
+    }
+
+    /* --- Adaptación de la cámara para móviles --- */
+    /* Por defecto, para pantallas más pequeñas, se asume orientación vertical */
+    .camera-video-container {
+        padding-top: 177.77%; /* Ratio 9:16 (altura es (16/9)*100% = 177.77% del ancho) */
+    }
+}
+
+/* Media query para orientación horizontal específica en móviles (ancho > altura) */
+@media (max-width: 900px) and (orientation: landscape) {
+    .camera-video-container {
+        padding-top: 56.25%; /* Ratio 16:9 (altura es 56.25% del ancho) */
+    }
+}
+
+
+/* Estilos para el input de tipo file (Marca de Agua) */
+.file-input-container {
+    display: flex;
+    flex-direction: column; /* Cambia a columna en móviles para que el label esté encima del input */
+    align-items: flex-start; /* Alinea el label y el input a la izquierda */
+    gap: 10px;
+    margin-bottom: 15px;
+    background-color: #e3f2fd; /* Azul claro */
+    border: 1px solid #bbdefb;
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.file-input-container label {
+    font-weight: bold;
+    color: #555;
+    flex-shrink: 0; /* No se encoge */
+}
+
+.file-input-container input[type="file"] {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    padding: 8px;
+    border: 1px solid #90caf9;
+    border-radius: 4px;
+    background-color: #fff;
+    width: 100%; /* Asegura que el input de archivo ocupe todo el ancho disponible */
+}
+
+#watermarkMessage {
+    margin-top: -10px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #777;
+    text-align: center;
+}
